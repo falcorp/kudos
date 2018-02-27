@@ -1,34 +1,38 @@
-<form class="form-horizontal container-fluid">
-<fieldset>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+    <div class="container">
+        <div class="card card-container">
 
-<!-- Form Name -->
-<legend>Login</legend>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class="container">
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Username">Username</label>
-  <div class="col-md-4">
-  <input id="Username" name="Username" type="text" placeholder="mysuperusername" class="form-control input-md" required="">
+      <script id="metamorph-1-start" type="text/x-placeholder"></script><script id="metamorph-21-start" type="text/x-placeholder"></script>
 
-  </div>
-</div>
+	<div class="container text-center">
+	    <form class="form-signin" data-ember-action="2">
+	    	<h2 class="form-signin-heading">Kudos Sign in</h2>
 
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password</label>
-  <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+			<small class="text-muted">Connect to [Kudos] with your favorite social network</small>
+			<br><br>
 
-  </div>
-</div>
 
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-success">Login</button>
-  </div>
-</div>
+<p>
+<a class="btn btn-primary social-login-btn social-facebook" href="/auth/facebook"><i class="fa fa-facebook"></i></a>
+<a class="btn btn-primary social-login-btn social-google" href="/auth/google"><i class="fa fa-google-plus"></i></a>
+</p>
 
-</fieldset>
-</form>
+
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
