@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule, NgbTabsetConfig} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -15,9 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 
 // NB ANGULARFIRE IMPORTS
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import {HttpModule} from '@angular/http';
 
 export const firebaseConfig = {
@@ -44,11 +42,9 @@ export const firebaseConfig = {
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    HttpModule
   ],
   providers: [NgbTabsetConfig],
   bootstrap: [AppComponent]
