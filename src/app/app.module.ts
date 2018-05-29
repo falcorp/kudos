@@ -8,18 +8,25 @@ import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { AppRoutingModule } from './app-routing.module';
+import { LogoutComponent } from './components/logout/logout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
     NavBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [NgbTabsetConfig],
   bootstrap: [AppComponent]
