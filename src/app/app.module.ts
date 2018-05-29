@@ -18,14 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import {HttpModule} from '@angular/http';
 
-export const firebaseConfig = {
-    apiKey: 'AIzaSyDNW_nPhGMr-6LlaSntRso2qhk5WDrpyqc',
-    authDomain: 'kudos-application.firebaseapp.com',
-    databaseURL: 'https://kudos-application.firebaseio.com',
-    projectId: 'kudos-application',
-    storageBucket: 'kudos-application.appspot.com',
-    messagingSenderId: '841527973504'
-};
+
 
 @NgModule({
   declarations: [

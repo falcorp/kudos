@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
     firebase.auth().signInWithEmailAndPassword(username,password)
     .then(
       response => console.log('Login successfull')
-    ).catch(
-     
-    );
+    ).catch();
   }
 
   // Function to disable form
