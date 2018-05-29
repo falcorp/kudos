@@ -1,3 +1,27 @@
-<p>
-  register works!
-</p>
+<form #formData='ngForm' (ngSubmit)="onSubmit()" class="mt-5">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input required="required" (ngModel)="email" name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input required="required" (ngModel)="password" name="password" type="password" class="form-control" id="inputPassword4"
+             placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      {{ model | json}}
+      <input class="form-control" placeholder="Date of Birth" (click)="d.toggle()"
+             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg"
+               style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-secondary">Join Kudos</button>
+</form>

@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -18,7 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyDNW_nPhGMr-6LlaSntRso2qhk5WDrpyqc',
@@ -45,12 +46,13 @@ export const firebaseConfig = {
     NgbModule.forRoot(),
     FormsModule,
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+
   ],
-  providers: [NgbTabsetConfig],
+  providers: [NgbTabsetConfig, ReactiveFormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
