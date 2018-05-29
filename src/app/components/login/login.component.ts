@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  LoginEmailPassword(username: string, password: string) {
+    firebase.auth().signInWithEmailAndPassword(username,password)
+    .then(
+      response => console.log('Login successfull')
+    ).catch(
+     
+    );
+  }
+
   // Function to disable form
   disableForm() {
     this.form.controls['username'].disable(); // Disable username field
@@ -45,6 +55,7 @@ export class LoginComponent implements OnInit {
   public showData(){
     console.log(this.form.value);
   }
+ 
 
   
 }
