@@ -15,7 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 // NB ANGULARFIRE IMPORTS
 
 import {HttpModule} from '@angular/http';
-// import { AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 
 
 
