@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   messageClass;
   message;
   processing = false;
- 
+
   username: FormControl;
   password: FormControl;
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   LoginEmailPassword(username: string, password: string) {
-    firebase.auth().signInWithEmailAndPassword(username,password)
+    firebase.auth().signInWithEmailAndPassword(username, password)
     .then(
       response => console.log('Login successfull')
     ).catch();
@@ -53,7 +53,4 @@ export class LoginComponent implements OnInit {
   public showData(){
     console.log(this.form.value);
   }
- 
-
-  
 }
