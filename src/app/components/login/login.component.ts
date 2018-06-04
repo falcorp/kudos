@@ -13,27 +13,17 @@ import * as firebase from 'firebase';
 })
 export class LoginComponent implements OnInit {
 
+   email;
+  password;
   constructor(private authService:AuthService,private router: Router) {}
 
   ngOnInit() {
   }
 
   onSubmit(form : NgForm){
-    const email= form.value.email;
-    const password= form.value.password;
-
-    this.authService.login(email,password);
+    this.email= form.value.email;
+    this.password= form.value.password;
+    this.authService.login(this.email,this.password);
   }
-  
-  // //when you login
-  // onSignIn(){
-  //   firebase.auth().signInWithEmailAndPassword(email, password)
-  //   .then(
-  //   result =>console.log(result.user),
-  //   // this.router.navigate(['/dashboard'])
-  // ).catch(
-  //   error =>console.log(error.message)
-  // );
-  // }
-  
+
 }
