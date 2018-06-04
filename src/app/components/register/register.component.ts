@@ -10,9 +10,14 @@ import * as firebase from 'firebase';
 })
 export class RegisterComponent implements OnInit {
 
+  showAlert: boolean = false;
+  message: string = "no error";
+
   regForm: FormGroup;
   registerUsername: FormControl;
   registerPassword: FormControl;
+
+
   constructor() { }
 
   ngOnInit() {
@@ -25,12 +30,28 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  dismissAlert() {
+    this.showAlert = false;
+  }
+
   registerSubmit() {
+    const me = this;
     firebase.auth().createUserWithEmailAndPassword(this.registerUsername.value, this.registerPassword.value)
+      .then( (response) => {
+        console.log('Response: ', response);
+        const user = firebase.auth().currentUser;
+        user.sendEmailVerification().then(function() {
+          //   // Email sent.
+        }).catch(function(error) {
+          console.log(error);
+        });
+      })
       .catch(function (error) {
       // Handle Errors here.
-      alert(error.code);
-      alert(error.message);
+      // alert(error.code);
+      // alert(error.message);
+        me.showAlert = true;
+        me.message = error.message;
       // ...
     });
   }
