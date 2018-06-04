@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../../auth.service';
-//for routing upon click event
-import { Router } from '@angular/router';
+import { FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
 import * as firebase from 'firebase';
-
 
 @Component({
   selector: 'app-login',
@@ -13,17 +9,51 @@ import * as firebase from 'firebase';
 })
 export class LoginComponent implements OnInit {
 
-   email;
-  password;
-  constructor(private authService:AuthService,private router: Router) {}
+  messageClass;
+  message;
+  processing = false;
+ 
+  username: FormControl;
+  password: FormControl;
+
+  form: FormGroup;
+
+  constructor(private fb:FormBuilder) {}
 
   ngOnInit() {
+
+    this.username = new FormControl('',Validators.required);
+    this.password = new FormControl('',Validators.required);
+
+    this.form = new FormGroup({
+      username: this.username,
+      password: this.password
+    });
   }
 
-  onSubmit(form : NgForm){
-    this.email= form.value.email;
-    this.password= form.value.password;
-    this.authService.login(this.email,this.password);
+  LoginEmailPassword(username: string, password: string) {
+    firebase.auth().signInWithEmailAndPassword(username,password)
+    .then(
+      response => console.log('Login successfull')
+    ).catch();
   }
 
+  // Function to disable form
+  disableForm() {
+    this.form.controls['username'].disable(); // Disable username field
+    this.form.controls['password'].disable(); // Disable password field
+  }
+
+  // Function to enable form
+  enableForm() {
+    this.form.controls['username'].enable(); // Enable username field
+    this.form.controls['password'].enable(); // Enable password field
+  }
+
+  public showData(){
+    console.log(this.form.value);
+  }
+ 
+
+  
 }
