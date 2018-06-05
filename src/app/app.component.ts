@@ -1,21 +1,26 @@
-import {Component} from '@angular/core';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import * as firebase from 'firebase';
+import {Component, OnInit} from '@angular/core';
 
-const now = new Date();
+
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-    title = 'app';
-    currentJustify = 'justified';
+export class AppComponent implements OnInit {
+   
+    ngOnInit(){
 
-    model: NgbDateStruct;
-    date: {year: number, month: number};
-
-    selectToday() {
-        this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+        firebase.initializeApp( {
+            apiKey: 'AIzaSyDNW_nPhGMr-6LlaSntRso2qhk5WDrpyqc',
+            authDomain: 'kudos-application.firebaseapp.com',
+            databaseURL: 'https://kudos-application.firebaseio.com',
+            projectId: 'kudos-application',
+            storageBucket: 'kudos-application.appspot.com',
+            messagingSenderId: '841527973504'
+        });
+          
+        
     }
 }
