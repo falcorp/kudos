@@ -1,38 +1,20 @@
-<h2 class="page-header">Login</h2>
+<div class="col-ms-8 col-ms-offset-2">
+  <h3>Login </h3>
 
-<!-- Custom Success/Error Message -->
-<div class="row show-hide-message">
-  <div [ngClass]="messageClass">
-    {{ message }}
-  </div>
+  <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <div class="form-group" [class.has.error]="email.invalid && email.touched">
+      <label for="email" class="control-label">Email</label>
+      <input ngModel name="email" required email type="email" class="form-control" #email="ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+      <span class="help-block" *ngIf="email.errors?.required && email.touched">Email is required</span>
+      <span class="help-block" *ngIf="email.errors?.email && email.touched">Email is invalid</span>
+    </div>
+    <div class="form-group" [class.has.error]="password.touched && password.invalid">
+      <label for="password" class="control-label">Password</label>
+      <input ngModel name="password" required type="password" class="form-control" #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+      <span class="help-block" *ngIf="password.touched && password.errors?.required">Password is required</span>
+    </div>
+
+    <button [disabled]="!loginForm.valid" class="btn btn-primary">SIGN IN</button>
+  </form>
 </div>
-
-<!-- Login Form -->
-<form [formGroup]="form" (submit)="onLoginSubmit()">
-
-  <!-- Username Field -->
-  <div class="form-group">
-    <label for="username">Username</label>
-    <div [ngClass]="{'has-error': form.controls.username.errors && form.controls.username.dirty, 'has-success': form.controls.username.valid && form.controls.username.dirty }">
-      <input class="form-control" type="text" name="username" formControlName="username" />
-      <!-- Validation -->
-      <ul class="help-block">
-        <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Password Field  -->
-  <div class="form-group">
-    <label for="password">Password</label>
-    <div [ngClass]="{'has-error': form.controls.password.errors && form.controls.password.dirty, 'has-success': form.controls.password.valid && form.controls.password.dirty }">
-      <input class="form-control" type="password" name="password" formControlName="password" />
-      <!-- Validation -->
-      <ul class="help-block">
-        <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
-      </ul>
-    </div>
-  </div>
-  <!-- Submit Button -->
-  <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" />
-</form>
