@@ -1,34 +1,17 @@
 import * as firebase from 'firebase';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor(public router: Router) { }
+  constructor(private router:Router) { }
 
-  loginGoogle() {
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
-      (success) => {
-        this.router.navigate(['/dashboard']);
-      }
+  login(email:string, password:string){
+    firebase.auth().signInWithEmailAndPassword(email,password)
+    .then( success => this.router.navigate(['/dashboard'])
     ).catch(
-      (err) => {
-        console.log(err);
-      }
+      err => console.log(err.message)
     );
   }
-
-  fbLogin() {
-    firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
-      (success) => {
-        this.router.navigate(['/profile']);
-      }
-    ).catch(
-    );
-  }
-
 }
-
-
-
