@@ -34,6 +34,6 @@
     </div>
   </div>
   <!-- Submit Button -->
-  <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" />
-  
+  <button [disabled]="!form.valid || processing" class="btn-block " type="submit">Login</button>
+  <!--<button (click)="loginGoogle()" class="btn-block btn-primary">LoginGoogle</button>-->
 </form>

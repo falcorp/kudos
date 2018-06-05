@@ -20,6 +20,9 @@
         <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-link" routerLink="/logout">Logout</a>
       </li>
       <li><button (click)="loginGoogle()" class="btn-block btn-primary">LoginGoogle</button></li>
+      <li>
+        <button (click)="fbLogin()" class="btn-block btn-primary">LoginFacebook</button>
+      </li>
     </ul>
   </div>
 </nav>

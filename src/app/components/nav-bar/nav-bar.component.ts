@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
+
 import * as firebase from 'firebase';
 
 @Component({
@@ -8,14 +11,17 @@ import * as firebase from 'firebase';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private authservice: AuthService) { }
 
   ngOnInit() {
   }
 
-  
   loginGoogle() {
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.authservice.loginGoogle();
   }
 
+
+  fbLogin() {
+    this.authservice.fbLogin();
+  }
 }
