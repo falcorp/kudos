@@ -24,5 +24,9 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email,password);
   }
-  //lol
+  
+
+  loginGoogle(){
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 }

@@ -15,6 +15,22 @@
       <span class="help-block" *ngIf="password.touched && password.errors?.required">Password is required</span>
     </div>
 
-    <button [disabled]="!loginForm.valid" class="btn btn-primary">SIGN IN</button>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <button [disabled]="!loginForm.valid" class="btn btn-success btn-sm">SIGN IN</button>
+        </div>
+        <div class="col">
+          <button (click)="loginGoogle()" class="btn btn-googleplus btn-sm">
+            <a href="#" title="Google+">
+              <i class="fa fa-google-plus fa-fw"></i>Google+</a>
+          </button>
+        </div>
+        <div class="col">
+          <a href="#" title="Facebook" class="btn btn-facebook btn-sm">
+            <i class="fa fa-facebook fa-fw"></i>Facebook</a>
+        </div>
+      </div>
+    </div>
   </form>
 </div>
