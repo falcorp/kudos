@@ -48,5 +48,9 @@ export class LoginComponent implements OnInit {
     console.log(this.form.value);
   }
 
+  loginGoogle() {
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
   
 }

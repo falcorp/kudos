@@ -34,6 +34,20 @@
     </div>
   </div>
   <!-- Submit Button -->
-  <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" />
+      <div class="container">
+        <div class="row">
+          <div class="col">
+  <input [disabled]="!form.valid || processing" class="btn btn-success btn-lg" type="submit" value="Login" />
+          </div>
+        <div class="col">
+          <button (click)="loginGoogle()" class="btn btn-google-plus btn-lg"><a href="#" title="Google+" >
+              <i class="fa fa-google-plus fa-fw"></i>Google+</a></button>
+          </div>
+          <div class="col">
+            <a href="#" title="Facebook" class="btn btn-facebook btn-lg">
+              <i class="fa fa-facebook fa-fw"></i>Facebook</a>
+          </div>
+      </div>
+      </div>
   
 </form>

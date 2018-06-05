@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 fixed-top">
   <a class="navbar-brand" routerLink="home"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
       <li class="nav-item">
         <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-link" routerLink="/logout">Logout</a>
       </li>
-      <li><button (click)="loginGoogle()" class="btn-block btn-primary">LoginGoogle</button></li>
+      
     </ul>
   </div>
 </nav>

@@ -14,8 +14,6 @@ export class NavBarComponent implements OnInit {
   }
 
   
-  loginGoogle() {
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
+ 
 
 }
