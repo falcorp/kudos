@@ -10,7 +10,8 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    ngOnInit() {
+   
+    ngOnInit(){
 
         firebase.initializeApp( {
             apiKey: 'AIzaSyDNW_nPhGMr-6LlaSntRso2qhk5WDrpyqc',
@@ -20,5 +21,7 @@ export class AppComponent implements OnInit {
             storageBucket: 'kudos-application.appspot.com',
             messagingSenderId: '841527973504'
         });
+          
+        
     }
 }
