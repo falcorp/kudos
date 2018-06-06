@@ -1,204 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+</head>
 
-<main role="main" class="full-height">
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 ">
-      <form class="form-horizontal">
-        <fieldset>
+<body>
 
-          <!-- Form Name -->
-          <legend>Edit Profile</legend>
+<div class="d-flex h-100 mx-auto flex-column">
+  <header class="masthead mb-auto">
 
-          <!-- Text input-->
+  </header>
 
+  <main role="main" class="full-height">
+      <h1 class="display-4">Profile</h1>
+      <p class="lead">blah blah blah for now.</p>
+      <hr class="my-4">
+    <ngb-tabset>
+      <ngb-tab title="User Info">
+        <ng-template ngbTabContent>
+          <img src="{{photoURL || 'https://media.licdn.com/dms/image/C4E03AQEbN5D8zIQqxA/profile-displayphoto-shrink_200_200/0?e=1533772800&v=beta&t=r3L1l6ubzZTmt7qII1TUIcdYelrX7PG0T6OLIQ7M-tA'}}" alt="..." class="img-thumbnail mt-3">
+          <p>{{displayName || "No Display Name"}}</p>
+          <p>{{email || "No email addresss"}}</p>
+          <p></p>
+          <button class="btn btn-outline-dark mb-2 mr-2" (click)="openVerticallyCentered(content)">Edit Profile Information</button>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Danger Zone">
+        <ng-template ngbTabContent>
+          <p>Because default values have been customized.</p>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
 
+    <!--Edit Profile Modal-->
+    <ng-template #content let-c="close" let-d="dismiss">
+      <form >
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Profile Info</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Name (Full name)">Name (Full name)</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control">
-              </div>
-
-
-            </div>
-
-
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
           </div>
-
-          <!-- File Button -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
-            <div class="col-md-4">
-              <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
             </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
-            <div class="col-md-4">
-
-              <div class="input-group">
-                <input id="dob" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
-              </div>
-
-
-            </div>
-          </div>
-
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Father">Father's name</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Father" name="Father" type="text" placeholder="Father's name" class="form-control input-md">
-
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Mother">Mother's Name</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Mother" name="Mother" type="text" placeholder="Mother's Name" class="form-control input-md">
-
-              </div>
-
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
             </div>
           </div>
 
-          <!-- Multiple Radios (inline) -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Gender">Gender</label>
-            <div class="col-md-4">
-              <label class="radio-inline" for="Gender-0">
-                <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked"> Male
-              </label>
-              <label class="radio-inline" for="Gender-1">
-                <input type="radio" name="Gender" id="Gender-1" value="2"> Female
-              </label>
-              <label class="radio-inline" for="Gender-2">
-                <input type="radio" name="Gender" id="Gender-2" value="3"> Other
-              </label>
-            </div>
-          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="updateUserProfile()">Submit</button>
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
 
-          <!-- Multiple Radios (inline) -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="radios">Marital Status:</label>
-            <div class="col-md-4">
-              <label class="radio-inline" for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="1" checked="checked"> Married
-              </label>
-              <label class="radio-inline" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="2"> Unmarried
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-4 control-label col-xs-12" for="Permanent Address">Permanent Address</label>
-            <div class="col-md-2  col-xs-4">
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="District" class="form-control input-md ">
-            </div>
-
-            <div class="col-md-2 col-xs-4">
-
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Area" class="form-control input-md ">
-            </div>
-
-
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Permanent Address"></label>
-            <div class="col-md-2  col-xs-4">
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Street" class="form-control input-md ">
-
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Email Address">Phone No</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="phoneno" name="phoneno" type="text" placeholder="Phone No" class="form-control input-md">
-              </div>
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Email Address">Email Address</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
-
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Multiple Checkboxes -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Languages Known">Languages Known</label>
-            <div class="col-md-4">
-              <div class="checkbox">
-                <label for="Languages Known-0">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-0" value="1"> Nepali
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-1">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-1" value="2"> Newari
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-2">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-2" value="3"> English
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-3">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-3" value="4"> Hindi
-                </label>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- Textarea -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Overview (max 200 words)">Overview (max 200 words)</label>
-            <div class="col-md-4">
-              <textarea class="form-control" rows="10" id="Overview (max 200 words)" name="Overview (max 200 words)">Overview</textarea>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label class="col-md-4 control-label"></label>
-            <div class="col-md-4">
-              <a href="#" class="btn btn-success">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
-              <a href="#" class="btn btn-danger" value="">
-                <span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
-
-            </div>
-          </div>
-
-        </fieldset>
+      </div>
       </form>
-    </div>
+    </ng-template>
+  </main>
 
-  </div>
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    </div>
+  </footer>
 </div>
-</main>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+</html>
