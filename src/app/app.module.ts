@@ -23,6 +23,7 @@ import {HttpModule} from '@angular/http';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
+import {AuthService} from './auth.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {environment} from '../environments/environment';
     AngularFireModule.initializeApp(environment.config),
     HttpModule
   ],
-  providers: [NgbTabsetConfig, AngularFireAuth, DbContextService],
+  providers: [NgbTabsetConfig, AngularFireAuth, DbContextService, AuthService],
   bootstrap: [AppComponent]
 })
 
