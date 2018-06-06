@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  config: {
+    apiKey: 'AIzaSyDNW_nPhGMr-6LlaSntRso2qhk5WDrpyqc',
+    authDomain: 'kudos-application.firebaseapp.com',
+    databaseURL: 'https://kudos-application.firebaseio.com',
+    projectId: 'kudos-application',
+    storageBucket: 'kudos-application.appspot.com',
+    messagingSenderId: '841527973504'
+  }
 };
