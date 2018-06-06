@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
 </head>
 
 <body class="text-center">
 
 <div class="d-flex h-100 mx-auto flex-column">
     <header class="masthead mb-auto">
-
+        
     </header>
 
     <main role="main" class="full-height">
-        <div class="jumbotron">
+        <div class="jumbotron shadow p-2">
             <h1 class="display-4">Welcome to Kudos</h1>
             <p class="lead">Kudos is a behavioral modification tool. We use Kudos to reward great behavior and suggest
                 better ways to deal with unsatisfactory behavior</p>
@@ -26,7 +30,32 @@
                         <ngb-tabset [justify]="currentJustify">
                             <ngb-tab title="Join Kudos">
                                 <ng-template ngbTabContent>
-                                  <app-register></app-register>
+                                    <form class="mt-5">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Password</label>
+                                                <input type="password" class="form-control" id="inputPassword4"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" placeholder="Date of Birth" (click)="d.toggle()"
+                                                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                                        <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg"
+                                                             style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Join Kudos</button>
+                                    </form>
                                 </ng-template>
                             </ngb-tab>
                             <ngb-tab>
@@ -44,8 +73,8 @@
 
     <footer class="mastfoot mt-auto">
         <div class="inner">
-
-        </div>
+            
+</div>
     </footer>
 </div>
 
