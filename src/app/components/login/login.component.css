@@ -6,7 +6,7 @@ html {
 	  background: #E93F2E;
 	  border-radius: 5px;
 	  color: #fff;
-	  border-width: 0;
+	  border-width: 1px;
 	  border-style: solid;
       border-color: #b72213;
       
@@ -36,5 +36,15 @@ html {
 	}
 	.btn-facebook:active, .btn-facebook:hover {
 	  background: #263961;
+	  color: #fff;
+	}
+.btn-success {
+	border-width: 1px;
+	border-style: solid;
+	box-shadow: 2px 1px #263961;
+}
+	
+	.btn-success:active, .btn-success:hover {
+	  background: #006400;
 	  color: #fff;
 	}
