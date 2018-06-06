@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+    email = '';
 
-  ngOnInit() {
+    constructor() { }
+
+    ngOnInit() {
+    }
+    deleteAccount() {
+      const user = firebase.auth().currentUser;
+
+      user.delete().then((success) => {
+        console.log('User delete');
+      }).catch((err) => {
+        console.log(err);
+      });
+      }
   }
 
-}
+

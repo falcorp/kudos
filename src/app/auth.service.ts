@@ -30,7 +30,7 @@ export class AuthService {
   fbLogin() {
     firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
       (success) => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashboard']);
       }
     ).catch(
     );
