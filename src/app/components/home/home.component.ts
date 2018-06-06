@@ -8,7 +8,7 @@ const now = new Date();
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent {
 
   title = 'app';
     currentJustify = 'justified';
