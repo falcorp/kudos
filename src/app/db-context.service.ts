@@ -10,14 +10,12 @@ export class DbContextService {
   }
   getUserInfo(id: string) {
    return firebase.database().ref('/users/' + id).once('value').then(function(snapshot) {
-       console.log('snapshot', snapshot.val());
        return snapshot.val();
     });
   }
 
   storeUserInfo(userData: any) {
     const {displayName, uid, email, emailVerified , phoneNumber} = userData;
-    console.log('user data', userData);
     firebase.database().ref('users/' + uid ).set({
       displayName,
       uid,
@@ -30,20 +28,18 @@ export class DbContextService {
   }
 
  async uploadPicture(file:any, uid){
-    if (file) {
+    if (file != false) {
       const storageRef = firebase.storage().ref();
       let response = await storageRef.child(uid + '.jpg').put(file);
-      console.log('upload pic resp',  response.metadata.fullPath);
       return  response.metadata.fullPath;
     }
   }
 
-  async updateUserInfo(userData: any, file: any) {
+  async updateUserInfo(userData: any, file: any, upload:boolean) {
     const updates = {};
 
-    if (file){
+    if (upload ==true){
       userData.photoURL = await this.uploadPicture(file,userData.uid);
-      console.log("photoUrl",userData.photoURL);
     }
     updates['/users/' + userData.uid] = userData;
   

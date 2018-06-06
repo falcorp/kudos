@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
  profilePicture: string;
 
 
+ newFile:boolean =false;
+
 
   constructor(private afAuth: AngularFireAuth, private modalService: NgbModal, public  dbContext: DbContextService) {
    this.afAuth.authState.subscribe(auth => {
@@ -80,6 +82,7 @@ export class ProfileComponent implements OnInit {
 
   onFileChanged(event) {
     this.photo = event.target.files[0]
+    this.newFile = event.target.files.length > 0 ? true :false
   }
 
  
@@ -94,10 +97,10 @@ export class ProfileComponent implements OnInit {
       photoURL: this.photoURL
     }
 
-    console.log('photo', this.photo)
+   
   
     if (this.photo){
-      this.dbContext.updateUserInfo(obj, this.photo)
+      this.dbContext.updateUserInfo(obj, this.photo, this.newFile)
       .then(result => {
         if (result) {
           this.dbContext.getUserInfo(this.userId)
@@ -107,7 +110,7 @@ export class ProfileComponent implements OnInit {
         }
       });
     }else{
-      this.dbContext.updateUserInfo(obj, false)
+      this.dbContext.updateUserInfo(obj, null, this.newFile)
       .then(result => {
         if (result) {
           this.dbContext.getUserInfo(this.userId)
