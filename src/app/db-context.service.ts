@@ -29,21 +29,24 @@ export class DbContextService {
     });
   }
 
-  updateUserInfo(userData: any, file: any) {
-    const updates = {};
-    updates['/users/' + userData.uid] = userData;
+ async uploadPicture(file:any, uid){
     if (file) {
       const storageRef = firebase.storage().ref();
-      const profilePicture = storageRef.child('users/' + userData.uid + '.jpg').put(file);
+      let response = await storageRef.child(uid + '.jpg').put(file);
+      console.log('upload pic resp',  response.metadata.fullPath);
+      return  response.metadata.fullPath;
+    }
+  }
 
-      profilePicture.on('state_changed', function (snapshot:any) {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('upload progress', progress)
-      });
+  async updateUserInfo(userData: any, file: any) {
+    const updates = {};
 
-
-
-    }else{
+    if (file){
+      userData.photoURL = await this.uploadPicture(file,userData.uid);
+      console.log("photoUrl",userData.photoURL);
+    }
+    updates['/users/' + userData.uid] = userData;
+  
       return firebase.database().ref().update(updates)
         .then( () => {
           return true;
@@ -55,4 +58,4 @@ export class DbContextService {
 
   }
 
-}
+

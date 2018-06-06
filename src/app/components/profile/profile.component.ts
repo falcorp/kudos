@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   updtForm: FormGroup;
   updtDisplayName: FormControl;
   photo: FormControl;
+ profilePicture: string;
 
 
 
@@ -44,6 +45,18 @@ export class ProfileComponent implements OnInit {
     this.email = user.email;
     this.photoURL = user.photoURL;
     this.emailVerified = user.emailVerified;
+    if (this.photoURL){
+      const storageRef = firebase.storage().ref();
+    storageRef.child(this.photoURL).getDownloadURL()
+    .then(url =>{
+      this.profilePicture = url;
+    })
+    .catch(function(error){
+      console.log('error code', error.code);
+    })
+    }
+    
+
   }
 
   openVerticallyCentered(content) {
@@ -65,6 +78,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  onFileChanged(event) {
+    this.photo = event.target.files[0]
+  }
+
+ 
 
 
   updtSubmit() {
@@ -75,7 +93,11 @@ export class ProfileComponent implements OnInit {
       email: this.email,
       photoURL: this.photoURL
     }
-    this.dbContext.updateUserInfo(obj, this.photo)
+
+    console.log('photo', this.photo)
+  
+    if (this.photo){
+      this.dbContext.updateUserInfo(obj, this.photo)
       .then(result => {
         if (result) {
           this.dbContext.getUserInfo(this.userId)
@@ -84,6 +106,19 @@ export class ProfileComponent implements OnInit {
             });
         }
       });
+    }else{
+      this.dbContext.updateUserInfo(obj, false)
+      .then(result => {
+        if (result) {
+          this.dbContext.getUserInfo(this.userId)
+            .then( user => {
+              this.getData(user);
+            });
+        }
+      });
+    }
+
+  
   }
 
 }
