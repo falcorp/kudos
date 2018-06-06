@@ -8,7 +8,7 @@ export class DbContextService {
   constructor() {
     this.DataAccess = firebase.database();
   }
-  getUserInfo(id: stirng) {
+  getUserInfo(id: string) {
     firebase.database().ref('/users/' + id).once('value').then(function(snapshot) {
        console.log('snapshot', snapshot.val());
     });
