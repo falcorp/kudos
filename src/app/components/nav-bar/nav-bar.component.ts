@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+//for routing upon click event
 import { AuthService } from '../../auth.service';
-
-import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,17 +10,12 @@ import * as firebase from 'firebase';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router, private authservice: AuthService) { }
+  constructor(private AuthService:AuthService,private router:Router) { }
 
   ngOnInit() {
   }
 
-  loginGoogle() {
-    this.authservice.loginGoogle();
-  }
-
-
-  fbLogin() {
-    this.authservice.fbLogin();
+  logout(){
+    this.AuthService.logout();
   }
 }
