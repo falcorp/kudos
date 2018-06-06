@@ -7,7 +7,7 @@
   <meta name="author" content="">
 </head>
 
-<body class="text-center">
+<body>
 
 <div class="d-flex h-100 mx-auto flex-column">
   <header class="masthead mb-auto">
@@ -18,35 +18,62 @@
       <h1 class="display-4">Profile</h1>
       <p class="lead">blah blah blah for now.</p>
       <hr class="my-4">
-
-    <ngb-tabset type="pills">
-      <ngb-tab title="dump">
+    <ngb-tabset>
+      <ngb-tab title="User Info">
         <ng-template ngbTabContent>
-          <p>{{email}}</p>
+          <img src="{{photoURL || 'https://media.licdn.com/dms/image/C4E03AQEbN5D8zIQqxA/profile-displayphoto-shrink_200_200/0?e=1533772800&v=beta&t=r3L1l6ubzZTmt7qII1TUIcdYelrX7PG0T6OLIQ7M-tA'}}" alt="..." class="img-thumbnail mt-3">
+          <p>{{displayName || "No Display Name"}}</p>
+          <p>{{email || "No email addresss"}}</p>
+          <p></p>
+          <button class="btn btn-outline-dark mb-2 mr-2" (click)="openVerticallyCentered(content)">Edit Profile Information</button>
         </ng-template>
       </ngb-tab>
-      <ngb-tab>
-        <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
-        <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-          <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-            craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
-            cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-            shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
-            sint qui sapiente accusamus tattooed echo park.</p>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="Disabled" [disabled]="true">
+      <ngb-tab title="Danger Zone">
         <ng-template ngbTabContent>
-          <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+          <p>Because default values have been customized.</p>
         </ng-template>
       </ngb-tab>
     </ngb-tabset>
+
+    <!--Edit Profile Modal-->
+    <ng-template #content let-c="close" let-d="dismiss">
+      <form >
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Profile Info</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
+            </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="updateUserProfile()">Submit</button>
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+
+      </div>
+      </form>
+    </ng-template>
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-
     </div>
   </footer>
 </div>

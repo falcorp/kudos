@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
+import {DbContextService} from '../../db-context.service';
+
 
 
 @Component({
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
   registerPassword: FormControl;
 
 
-  constructor() { }
+  constructor(private _dataService: DbContextService) { }
 
   ngOnInit() {
       this.registerUsername = new FormControl('');
@@ -39,6 +41,9 @@ export class RegisterComponent implements OnInit {
     firebase.auth().createUserWithEmailAndPassword(this.registerUsername.value, this.registerPassword.value)
       .then( (response) => {
         console.log('Response: ', response);
+      console.log(me._dataService)
+        me._dataService.storeUserInfo(response.user);
+
         const user = firebase.auth().currentUser;
         user.sendEmailVerification().then(function() {
           //   // Email sent.

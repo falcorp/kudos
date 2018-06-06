@@ -7,18 +7,22 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 
+
+// IMPORTING SERVICES
+import { DbContextService } from './db-context.service';
+
+
 // NB ANGULARFIRE IMPORTS
 
-
 import {HttpModule} from '@angular/http';
-
-
+import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import {HttpModule} from '@angular/http';
     LogoutComponent,
     ProfileComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule,
@@ -37,9 +42,11 @@ import {HttpModule} from '@angular/http';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.config),
     HttpModule
   ],
-  providers: [NgbTabsetConfig],
+  providers: [NgbTabsetConfig, AngularFireAuth, DbContextService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
