@@ -15,4 +15,12 @@ export class AuthService {
     );
   }
   
+  logout(){
+    firebase.auth().signOut()
+    .then(
+      success => this.router.navigate(['/home']))
+    .catch(
+      err => console.log(err.message)
+    );
+  }
 }
