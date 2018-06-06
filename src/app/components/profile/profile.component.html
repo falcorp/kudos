@@ -1,204 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+</head>
 
-<main role="main" class="full-height">
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 ">
-      <form class="form-horizontal">
-        <fieldset>
+<body>
 
-          <!-- Form Name -->
-          <legend>Edit Profile</legend>
+<div class="d-flex h-100 mx-auto flex-column">
+  <header class="masthead mb-auto">
 
-          <!-- Text input-->
+  </header>
 
+  <main role="main" class="full-height">
+      <h1 class="display-4">Profile</h1>
+      <p class="lead">blah blah blah for now.</p>
+      <hr class="my-4">
+    <ngb-tabset>
+      <ngb-tab title="User Info">
+        <ng-template ngbTabContent>
+          <img src="{{photoURL || 'data:image/jpeg;base64,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'}}" alt="..." class="img-thumbnail mt-3">
+          <p>{{displayName || "No Display Name"}}</p>
+          <p>{{email || "No email addresss"}}</p>
+          <p></p>
+          <button class="btn btn-outline-dark mb-2 mr-2" (click)="openVerticallyCentered(content)">Edit Profile Information</button>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Danger Zone">
+        <ng-template ngbTabContent>
+          <p>Because default values have been customized.</p>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
 
+    <!--Edit Profile Modal-->
+    <ng-template #content let-c="close" let-d="dismiss">
+      <form >
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Profile Info</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Name (Full name)">Name (Full name)</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control">
-              </div>
-
-
-            </div>
-
-
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
           </div>
-
-          <!-- File Button -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
-            <div class="col-md-4">
-              <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
             </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
-            <div class="col-md-4">
-
-              <div class="input-group">
-                <input id="dob" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
-              </div>
-
-
-            </div>
-          </div>
-
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Father">Father's name</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Father" name="Father" type="text" placeholder="Father's name" class="form-control input-md">
-
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Mother">Mother's Name</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Mother" name="Mother" type="text" placeholder="Mother's Name" class="form-control input-md">
-
-              </div>
-
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
             </div>
           </div>
 
-          <!-- Multiple Radios (inline) -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Gender">Gender</label>
-            <div class="col-md-4">
-              <label class="radio-inline" for="Gender-0">
-                <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked"> Male
-              </label>
-              <label class="radio-inline" for="Gender-1">
-                <input type="radio" name="Gender" id="Gender-1" value="2"> Female
-              </label>
-              <label class="radio-inline" for="Gender-2">
-                <input type="radio" name="Gender" id="Gender-2" value="3"> Other
-              </label>
-            </div>
-          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="updateUserProfile()">Submit</button>
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
 
-          <!-- Multiple Radios (inline) -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="radios">Marital Status:</label>
-            <div class="col-md-4">
-              <label class="radio-inline" for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="1" checked="checked"> Married
-              </label>
-              <label class="radio-inline" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="2"> Unmarried
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-4 control-label col-xs-12" for="Permanent Address">Permanent Address</label>
-            <div class="col-md-2  col-xs-4">
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="District" class="form-control input-md ">
-            </div>
-
-            <div class="col-md-2 col-xs-4">
-
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Area" class="form-control input-md ">
-            </div>
-
-
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Permanent Address"></label>
-            <div class="col-md-2  col-xs-4">
-              <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Street" class="form-control input-md ">
-
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Email Address">Phone No</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="phoneno" name="phoneno" type="text" placeholder="Phone No" class="form-control input-md">
-              </div>
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Email Address">Email Address</label>
-            <div class="col-md-4">
-              <div class="input-group">
-                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
-
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Multiple Checkboxes -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Languages Known">Languages Known</label>
-            <div class="col-md-4">
-              <div class="checkbox">
-                <label for="Languages Known-0">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-0" value="1"> Nepali
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-1">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-1" value="2"> Newari
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-2">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-2" value="3"> English
-                </label>
-              </div>
-              <div class="checkbox">
-                <label for="Languages Known-3">
-                  <input type="checkbox" name="Languages Known" id="Languages Known-3" value="4"> Hindi
-                </label>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- Textarea -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="Overview (max 200 words)">Overview (max 200 words)</label>
-            <div class="col-md-4">
-              <textarea class="form-control" rows="10" id="Overview (max 200 words)" name="Overview (max 200 words)">Overview</textarea>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label class="col-md-4 control-label"></label>
-            <div class="col-md-4">
-              <a href="#" class="btn btn-success">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
-              <a href="#" class="btn btn-danger" value="">
-                <span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
-
-            </div>
-          </div>
-
-        </fieldset>
+      </div>
       </form>
-    </div>
+    </ng-template>
+  </main>
 
-  </div>
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    </div>
+  </footer>
 </div>
-</main>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+</html>
