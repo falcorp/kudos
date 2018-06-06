@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+//for routing upon click event
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,14 +10,12 @@ import * as firebase from 'firebase';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private AuthService:AuthService,private router:Router) { }
 
   ngOnInit() {
   }
 
-  
-  loginGoogle() {
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  logout(){
+    this.AuthService.logout();
   }
-
 }
