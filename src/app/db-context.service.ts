@@ -29,7 +29,7 @@ export class DbContextService {
   updateUserInfo(userData: any) {
     const updates = {};
     const postData = {
-      emailVerified: true,
+      emailVerified: 'heinpraatkak',
       uid: 'BrJ6OJDZn3eJhTY2kDeJRR7Ziys1',
       email: 'thapelo.motene@falcorp.co.za'
     };
