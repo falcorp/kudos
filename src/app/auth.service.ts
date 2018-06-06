@@ -14,13 +14,26 @@ export class AuthService {
       err => console.log(err.message)
     );
   }
-  
-  logout(){
-    firebase.auth().signOut()
-    .then(
-      success => this.router.navigate(['/home']))
-    .catch(
-      err => console.log(err.message)
+
+  loginGoogle() {
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
+      (success) => {
+        this.router.navigate(['/dashboard']);
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+      }
     );
   }
+
+  fbLogin() {
+    firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
+      (success) => {
+        this.router.navigate(['/profile']);
+      }
+    ).catch(
+    );
+  }
+
 }
