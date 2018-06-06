@@ -23,23 +23,35 @@ export class DbContextService {
       uid,
       email,
       emailVerified,
-      phoneNumber
+      phoneNumber,
+      kudosScore: 0 ,
+      photoURL: ''
     });
   }
 
-  updateUserInfo(userData: any) {
+  updateUserInfo(userData: any, file: any) {
     const updates = {};
-
     updates['/users/' + userData.uid] = userData;
+    if (file) {
+      const storageRef = firebase.storage().ref();
+      const profilePicture = storageRef.child('users/' + userData.uid + '.jpg').put(file);
+
+      profilePicture.on('state_changed', function (snapshot:any) {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('upload progress', progress)
+      });
 
 
-    return firebase.database().ref().update(updates)
-      .then( () => {
-      return true;
-      })
-      .catch(() => {
-        return false;
-      })
+
+    }else{
+      return firebase.database().ref().update(updates)
+        .then( () => {
+          return true;
+        })
+        .catch(() => {
+          return false;
+        });
+    }
 
   }
 

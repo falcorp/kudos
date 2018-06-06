@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
   providerData: Array<any>;
   updtForm: FormGroup;
   updtDisplayName: FormControl;
+  photo: FormControl;
+
 
 
   constructor(private afAuth: AngularFireAuth, private modalService: NgbModal, public  dbContext: DbContextService) {
@@ -55,23 +57,25 @@ export class ProfileComponent implements OnInit {
   // }
   ngOnInit() {
     this.updtDisplayName = new FormControl('');
-
+    this.photo = new FormControl('');
     this.updtForm = new FormGroup({
-      DisplayNameupdt: this.updtDisplayName
+      DisplayNameupdt: this.updtDisplayName,
+      profileImage: this.photo
 
     });
   }
 
+
+
   updtSubmit() {
-
-
     const obj = {
       uid: this.userId,
       displayName: this.updtDisplayName.value,
       emailVerified: this.emailVerified,
-      email: this.email
+      email: this.email,
+      photoURL: this.photoURL
     }
-    this.dbContext.updateUserInfo(obj)
+    this.dbContext.updateUserInfo(obj, this.photo)
       .then(result => {
         if (result) {
           this.dbContext.getUserInfo(this.userId)
