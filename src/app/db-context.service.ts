@@ -9,8 +9,9 @@ export class DbContextService {
     this.DataAccess = firebase.database();
   }
   getUserInfo(id: string) {
-    firebase.database().ref('/users/' + id).once('value').then(function(snapshot) {
+   return firebase.database().ref('/users/' + id).once('value').then(function(snapshot) {
        console.log('snapshot', snapshot.val());
+       return snapshot.val();
     });
   }
 
@@ -28,15 +29,17 @@ export class DbContextService {
 
   updateUserInfo(userData: any) {
     const updates = {};
-    const postData = {
-      emailVerified: 'heinpraatkak',
-      uid: 'BrJ6OJDZn3eJhTY2kDeJRR7Ziys1',
-      email: 'thapelo.motene@falcorp.co.za'
-    };
-    updates['/users/' + 'BrJ6OJDZn3eJhTY2kDeJRR7Ziys1'] = postData;
+
+    updates['/users/' + userData.uid] = userData;
 
 
-    return firebase.database().ref().update(updates);
+    return firebase.database().ref().update(updates)
+      .then( () => {
+      return true;
+      })
+      .catch(() => {
+        return false;
+      })
 
   }
 
