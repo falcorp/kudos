@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DbContextService} from '../../db-context.service';
+import { Router } from "@angular/router";
 
 
 
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   registerPassword: FormControl;
 
 
-  constructor(private _dataService: DbContextService) { }
+  constructor(private _dataService: DbContextService, private _router:Router) { }
 
   ngOnInit() {
       this.registerUsername = new FormControl('');
@@ -50,6 +51,8 @@ export class RegisterComponent implements OnInit {
         }).catch(function(error) {
           console.log(error);
         });
+
+        me._router.navigate(['/profile']);
       })
       .catch(function (error) {
       // Handle Errors here.
