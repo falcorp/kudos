@@ -25,6 +25,9 @@ export class ProfileComponent implements OnInit {
   updtDisplayName: FormControl;
   photo: FormControl;
  profilePicture: string;
+ updateName:string;
+ 
+ modalReference:any;
 
 
  newFile:boolean =false;
@@ -44,6 +47,7 @@ export class ProfileComponent implements OnInit {
   }
   getData(user: any ) {
     this.displayName = user.displayName;
+    this.updateName = user.displayName;
     this.email = user.email;
     this.photoURL = user.photoURL;
     this.emailVerified = user.emailVerified;
@@ -62,17 +66,12 @@ export class ProfileComponent implements OnInit {
   }
 
   openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+     this.modalReference = this.modalService.open(content, { centered: true });
   }
-  // updateUserProfile() {
-  //   this.dbContext.updateUserInfo({})
-  //     .then(result => {
-  //       console.log('result', result);
-  //     });
-  // }
+
   ngOnInit() {
     this.updtDisplayName = new FormControl('');
-    this.photo = new FormControl('');
+    this.photo = new FormControl(' ');
     this.updtForm = new FormGroup({
       DisplayNameupdt: this.updtDisplayName,
       profileImage: this.photo
@@ -103,6 +102,7 @@ export class ProfileComponent implements OnInit {
       this.dbContext.updateUserInfo(obj, this.photo, this.newFile)
       .then(result => {
         if (result) {
+          this.modalReference.close();
           this.dbContext.getUserInfo(this.userId)
             .then( user => {
               this.getData(user);
@@ -113,6 +113,7 @@ export class ProfileComponent implements OnInit {
       this.dbContext.updateUserInfo(obj, null, this.newFile)
       .then(result => {
         if (result) {
+          this.modalReference.close();
           this.dbContext.getUserInfo(this.userId)
             .then( user => {
               this.getData(user);
@@ -121,7 +122,7 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-  
+
   }
 
 }
