@@ -23,6 +23,10 @@ import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AuthService} from './auth.service';
 
+//icons staff
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,7 @@ import {AuthService} from './auth.service';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.config),
+    Angular2FontawesomeModule,
     HttpModule
   ],
   providers: [NgbTabsetConfig, AngularFireAuth, DbContextService, AuthService],
